@@ -9,5 +9,9 @@ namespace BarneyPowell.Controllers
         {
             return View();
         }
+
+        public string Test() {
+          return "Test";
+        }
     }
 }
