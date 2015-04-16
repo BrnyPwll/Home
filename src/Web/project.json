@@ -36,7 +36,6 @@
     "aspnetcore50": {}
   },
   "scripts": {
-    "postrestore": [ "npm install" ],
-    "postbuild": ["grunt default" ]
+   
   }
 }
