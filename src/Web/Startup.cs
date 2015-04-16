@@ -26,9 +26,14 @@ namespace BarneyPowell
         public Startup(IHostingEnvironment env)
         {
             // Setup configuration sources.
-            Configuration = new Configuration()
-                .AddJsonFile("config.json")
+            //Configuration = new Configuration()
+            //    .AddJsonFile("config.json")
+            //    .AddEnvironmentVariables();
+
+
+                Configuration = new Configuration()
                 .AddEnvironmentVariables();
+
         }
 
         public IConfiguration Configuration { get; set; }
@@ -49,18 +54,8 @@ namespace BarneyPowell
             // Add the console logger.
             loggerfactory.AddConsole();
 
-            // Add the following to the request pipeline only in development environment.
-            if (string.Equals(env.EnvironmentName, "Development", StringComparison.OrdinalIgnoreCase))
-            {
-                //app.UseBrowserLink();
-                app.UseErrorPage(ErrorPageOptions.ShowAll);
-            }
-            else
-            {
-                // Add Error handling middleware which catches all application specific errors and
-                // send the request to the following path or controller action.
-                app.UseErrorHandler("/Home/Error");
-            }
+            app.UseErrorPage(ErrorPageOptions.ShowAll);
+//                app.UseErrorHandler("/Home/Error");
 
             // Add static files to the request pipeline.
             app.UseStaticFiles();
